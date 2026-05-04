@@ -1,0 +1,17 @@
+{
+  "name": "WebMCP GoogleMap Agent",
+  "short_name": "NL Maps",
+  "description": "Natural-language Google Maps controller with WebMCP-compatible browser tools.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#eef1ee",
+  "theme_color": "#eef1ee",
+  "icons": [
+    {
+      "src": "./assets/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
