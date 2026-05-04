@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>WebMCP GoogleMap Agent</title>
+    <meta name="theme-color" content="#eef1ee">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="NL Maps">
+    <link rel="manifest" href="./manifest.webmanifest">
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="brand">
+          <div class="brand-mark" aria-hidden="true">GM</div>
+          <div class="brand-copy">
+            <h1>WebMCP GoogleMap</h1>
+            <p>Natural language map console</p>
+          </div>
+        </div>
+        <div class="status-strip" aria-label="Status">
+          <span class="status-pill" id="webmcpStatus">WebMCP checking</span>
+          <span class="status-pill">No backend</span>
+          <span class="status-pill">API key 0</span>
+        </div>
+      </header>
+
+      <main class="workspace">
+        <section class="map-panel" aria-label="Google Maps">
+          <iframe
+            id="mapFrame"
+            title="Google Maps view"
+            loading="eager"
+            allowfullscreen
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+
+          <div class="map-toolbar">
+            <span class="map-mode" id="mapModeLabel">Search</span>
+            <button class="icon-button" type="button" id="zoomOutButton" aria-label="Zoom out">−</button>
+            <button class="icon-button" type="button" id="zoomInButton" aria-label="Zoom in">+</button>
+            <button class="text-button" type="button" id="openMapsButton">Open Google Maps</button>
+          </div>
+
+          <form class="command-dock" id="commandForm">
+            <div class="prompt-chips" id="promptChips" aria-label="Examples"></div>
+            <div class="command-row">
+              <textarea
+                id="commandInput"
+                rows="1"
+                autocomplete="off"
+                autocapitalize="none"
+                enterkeyhint="search"
+                inputmode="search"
+                spellcheck="false"
+                placeholder="評価4.5以上の日本食レストラン"
+              ></textarea>
+              <button class="run-button" type="submit">Run</button>
+            </div>
+          </form>
+        </section>
+
+        <aside class="control-panel" aria-label="Map control panel">
+          <section class="panel-section">
+            <h2>解析</h2>
+            <dl class="state-grid">
+              <div><dt>Intent</dt><dd id="intentValue">search</dd></div>
+              <div><dt>Target</dt><dd id="targetValue">Tokyo Tower</dd></div>
+              <div><dt>Zoom</dt><dd id="zoomValue">14</dd></div>
+              <div><dt>Mode</dt><dd id="travelValue">map</dd></div>
+              <div><dt>Conditions</dt><dd id="conditionsValue">none</dd></div>
+            </dl>
+          </section>
+
+          <section class="panel-section">
+            <h2>Tool trace</h2>
+            <ol class="trace-list" id="traceList"></ol>
+          </section>
+
+          <section class="panel-section">
+            <h2>WebMCP tools</h2>
+            <ul class="tool-list" id="toolList"></ul>
+          </section>
+
+          <section class="panel-section">
+            <h2>Generated URL</h2>
+            <a class="generated-url" id="generatedUrl" target="_blank" rel="noreferrer"></a>
+          </section>
+
+          <section class="panel-section history-section">
+            <h2>History</h2>
+            <ul class="history-list" id="historyList"></ul>
+          </section>
+        </aside>
+      </main>
+    </div>
+
+    <script src="./app.js"></script>
+    <script src="./webmcp.js"></script>
+  </body>
+</html>
