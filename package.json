@@ -1,0 +1,9 @@
+{
+  "name": "webmcp-google-map-agent",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Static natural-language Google Maps controller with WebMCP tool registration.",
+  "scripts": {
+    "start": "python -m http.server 8787"
+  }
+}
